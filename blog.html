@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC Universe Movie Review</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <article class="blog-article">
+            <header class="article-header">
+                <span class="dc-badge">DC UNIVERSE</span>
+                <h1>The Batman: A Dark Knight Like Never Before</h1>
+                <div class="movie-genre">
+                    <span>Action</span>
+                    <span>Crime</span>
+                    <span>Drama</span>
+                </div>
+                <div class="featured-image">
+                    <img src="batmann.jpg" alt="The Batman movie poster featuring a dark, brooding Batman in Gotham City">
+                </div>
+            </header>
+
+            <div class="article-content">
+                <p class="intro">Matt Reeves' <strong>The Batman</strong> delivers a gripping, neo-noir take on the Caped Crusader, diving deep into the detective aspects of the character.</p>
+                
+                <h2>Story & Characters</h2>
+                <p>Robert Pattinson's Batman brings raw intensity, following his second year fighting crime in Gotham while tracking the Riddler, a serial killer targeting the city's elite.</p>
+                
+                <h2>Visuals & Atmosphere</h2>
+                <p>Gotham feels alive with dark, brooding cinematography. Action sequences are grounded, with practical effects that make every moment impactful.</p>
+                
+                <div class="highlight-box">
+                    <h3>Why It Works</h3>
+                    <ul>
+                        <li>Robert Pattinson's intense performance</li>
+                        <li>Gritty, detective-focused storyline</li>
+                        <li>Stunning cinematography</li>
+                        <li>Michael Giacchino's haunting score</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="author-info">
+                <div class="author-avatar">
+                    <img src="dc-fan-avatar.jpg" alt="Avatar of Daniel Negussie, DC Superfan and Movie Critic">
+                </div>
+                <div class="author-details">
+                    <h3>Daniel Negussie</h3>
+                    <p class="author-title">DC Superfan & Movie Critic</p>
+                    <p class="author-bio">Lifelong DC Comics enthusiast. I love superhero movies, comic books, and debating the best Batman stories.</p>
+                </div>
+            </div>
+
+            <section class="related-posts">
+                <h2>More Blog Posts</h2>
+                <div id="blog-posts-list">
+                    <p>Loading posts...</p>
+                </div>
+            </section>
+
+            <section class="comments-section">
+                <h2>Join the Discussion</h2>
+                <p class="discussion-prompt">What did you think of The Batman? Share your thoughts below!</p>
+                
+                <form class="comment-form" action="#">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name or DC character" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <textarea id="comment" name="comment" placeholder="Share your thoughts..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Post Comment</button>
+                </form>
+
+                <div class="comments-display">
+                    <!-- Comments will be dynamically inserted here -->
+                </div>
+            </section>
+        </article>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
