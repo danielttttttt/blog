@@ -15,41 +15,58 @@ window.addEventListener('load', function() {
 
 // Function to fetch blog posts
 function fetchBlogPosts() {
-    // Try to fetch from a real blog API, fallback to JSONPlaceholder
-    fetch('https://dev.to/api/articles?tag=javascript&per_page=5')
+    // Try to fetch DC-related news from NewsAPI (free tier)
+    fetch('https://newsapi.org/v2/everything?q=DC+comics+OR+Batman+OR+Superman+OR+Wonder+Woman&language=en&pageSize=5&apiKey=demo')
         .then(function(response) {
             return response.json();
         })
-        .then(function(articles) {
-            var blogPosts = articles.map(function(article) {
-                return {
-                    title: article.title,
-                    body: article.description || 'Click to read more about this interesting topic...'
-                };
-            });
-            displayBlogPosts(blogPosts);
+        .then(function(data) {
+            if (data.articles && data.articles.length > 0) {
+                var blogPosts = data.articles.map(function(article) {
+                    return {
+                        title: article.title,
+                        body: article.description || 'Read more about this DC Universe topic...'
+                    };
+                });
+                displayBlogPosts(blogPosts);
+            } else {
+                // Fallback to custom DC posts if no articles found
+                loadDCFallbackPosts();
+            }
         })
         .catch(function(error) {
-            console.log('Dev.to API failed, trying JSONPlaceholder:', error);
-            // Fallback to JSONPlaceholder
-            fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(posts) {
-                    var blogPosts = posts.map(function(post) {
-                        return {
-                            title: post.title,
-                            body: post.body.substring(0, 150) + '...'
-                        };
-                    });
-                    displayBlogPosts(blogPosts);
-                })
-                .catch(function(fallbackError) {
-                    console.log('All APIs failed:', fallbackError);
-                    blogPostsList.innerHTML = '<p>Failed to load posts. Please try again later.</p>';
-                });
+            console.log('NewsAPI failed, using DC fallback posts:', error);
+            // Fallback to curated DC posts
+            loadDCFallbackPosts();
         });
+}
+
+// Fallback function with DC-themed posts
+function loadDCFallbackPosts() {
+    var dcPosts = [
+        {
+            title: "The Batman 2022: A New Dark Knight Era",
+            body: "Robert Pattinson's Batman brings a fresh, noir-inspired take to Gotham City. This grounded approach focuses on detective work and psychological depth."
+        },
+        {
+            title: "Superman Legacy: James Gunn's Vision",
+            body: "The new Superman film promises to explore Clark Kent's dual identity as both alien and human, bringing hope back to the DC Universe."
+        },
+        {
+            title: "Wonder Woman's Cultural Impact",
+            body: "Gal Gadot's portrayal has redefined female superheroes in cinema, inspiring a new generation of fans and filmmakers worldwide."
+        },
+        {
+            title: "The Flash: Multiverse Adventures",
+            body: "Barry Allen's time-traveling adventure explores multiple timelines and brings together different versions of beloved DC characters."
+        },
+        {
+            title: "Aquaman: King of the Seven Seas",
+            body: "Jason Momoa's Aquaman has transformed the character from comic relief to a powerful, respected hero of the underwater world."
+        }
+    ];
+
+    displayBlogPosts(dcPosts);
 }
 
 // Function to display blog posts
